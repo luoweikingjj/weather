@@ -33,7 +33,7 @@ $weather = new Weather($key);
 ### 获取实时天气
 
 ```php
-$response = $weather->getWeather('深圳');
+$response = $weather->getLiveWeather('深圳');
 ```
 
 示例：
@@ -65,7 +65,7 @@ $response = $weather->getWeather('深圳');
 ### 获取近期天气预报
 
 ```php
-$response = $weather->getWeather('深圳', 'all');
+$response = $weather->getForecastWeather('深圳');
 ```
 
 示例：
@@ -141,10 +141,10 @@ $response = $weather->getWeather('深圳', 'all');
 
 ### 获取 XML 格式返回值
 
-第三个参数为返回值类型，可选 `json` 与 `xml`，默认 `json`：
+第二个参数为返回值类型，可选 `json` 与 `xml`，默认 `json`：
 
 ```php
-$response = $weather->getWeather('深圳', 'all', 'xml');
+$response = $weather->getLiveWeather('深圳', 'xml');
 ```
 
 示例：
@@ -176,11 +176,11 @@ $response = $weather->getWeather('深圳', 'all', 'xml');
 ### 参数说明
 
 ```php
-array|string getWeather(string $city, string $type = 'base', string $format = 'json')
+array|string getLiveWeather(string $city, string $format = 'json')
+array|string getForecastWeather(string $city, string $format = 'json')
 ```
 
 > - `$city` - 城市名，比如：“深圳”；
-> - `$type` - 返回内容类型：`base`: 返回实况天气 / `all`: 返回预报天气；
 > - `$format` - 输出的数据格式，默认为 json 格式，当 output 设置为 “`xml`” 时，输出的为 XML 格式的数据。
 
 
@@ -216,7 +216,7 @@ WEATHER_API_KEY=xxxxxxxxxxxxxxxxxxxxx
     .
     public function edit(Weather $weather) 
     {
-        $response = $weather->getWeather('深圳');
+        $response = $weather->getLiveWeather('深圳');
     }
     .
     .
@@ -233,7 +233,7 @@ WEATHER_API_KEY=xxxxxxxxxxxxxxxxxxxxx
     .
     public function edit() 
     {
-        $response = app('weather')->getWeather('深圳');
+        $response = app('weather')->getLiveWeather('深圳');
     }
     .
     .

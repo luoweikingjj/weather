@@ -18,7 +18,7 @@ class WeatherTest extends TestCase
         $w = new Weather('mock-key');
 
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Invalid type value(base/all): foo');
+        $this->expectExceptionMessage('Invalid type value(live/forecast): foo');
 
         $w->getWeather('深圳', 'foo');
 
@@ -54,7 +54,7 @@ class WeatherTest extends TestCase
         $w = \Mockery::mock(Weather::class, ['mock-key'])->makePartial();
         $w->allows()->getHttpClient()->andReturn($client);
 
-        $this->assertSame(['success' => true], $w->getWeather('深圳'));
+        $this->assertSame(['success' => true], $w->getLiveWeather('深圳'));
 
         // xml
         $response = new Response(200, [], '<hello>content</hello>');
@@ -71,7 +71,7 @@ class WeatherTest extends TestCase
         $w = \Mockery::mock(Weather::class, ['mock-key'])->makePartial();
         $w->allows()->getHttpClient()->andReturn($client);
 
-        $this->assertSame('<hello>content</hello>', $w->getWeather('深圳', 'all', 'xml'));
+        $this->assertSame('<hello>content</hello>', $w->getForecastWeather('深圳', 'xml'));
     }
 
     public function testGetWeatherWithGuzzleRuntimeException()
