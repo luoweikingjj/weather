@@ -17,5 +17,12 @@
         "psr-4": {
             "Luoweikingjj\\Weather\\": "src"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Luoweikingjj\\Weather\\ServiceProvider"
+            ]
+        }
     }
 }
