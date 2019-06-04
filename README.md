@@ -2,6 +2,7 @@
 
 基于 [高德开放平台](https://lbs.amap.com/dev/id/newuser) 的 PHP 天气信息组件。
 
+[![Build Status](https://travis-ci.org/luoweikingjj/weather.svg?branch=master)](https://travis-ci.org/luoweikingjj/weather)
 
 
 ## 安装
