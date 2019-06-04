@@ -1,0 +1,17 @@
+{
+    "name": "luoweikingjj/weather",
+    "description": "A weather SDK",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "luowei",
+            "email": "luoweikingjj@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Luoweikingjj\\Weather\\": "src"
+        }
+    }
+}
