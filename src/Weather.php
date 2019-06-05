@@ -67,8 +67,7 @@ class Weather
      * @throws InvalidArgumentException
      */
     public function getWeather($city, string $type = 'live', string $format = 'json')
-    {
-        $url = 'https://restapi.amap.com/v3/weather/weatherInfo';
+    {$url = 'https://restapi.amap.com/v3/weather/weatherInfo';
         $types = [
             'live' => 'base',
             'forecast' => 'all',
