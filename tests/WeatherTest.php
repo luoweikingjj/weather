@@ -1,5 +1,6 @@
 <?php
-/**
+
+/*
  * This file is part of the luoweikingjj/weather.
  *
  * (c) luoweikingjj <i@luowe.top>
@@ -20,8 +21,7 @@ use Mockery\Matcher\AnyArgs;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Class WeatherTest
- * @package Luoweikingjj\Weather\Tests
+ * Class WeatherTest.
  */
 class WeatherTest extends TestCase
 {
@@ -57,9 +57,6 @@ class WeatherTest extends TestCase
         $this->fail('Failed to assert getWeather throw exception with invalid argument.');
     }
 
-    /**
-     *
-     */
     public function testGetWeather()
     {
         // json
@@ -103,9 +100,6 @@ class WeatherTest extends TestCase
         $this->assertSame('<hello>content</hello>', $w->getForecastWeather('深圳', 'xml'));
     }
 
-    /**
-     *
-     */
     public function testGetWeatherWithGuzzleRuntimeException()
     {
         $client = \Mockery::mock(Client::class);
@@ -122,9 +116,6 @@ class WeatherTest extends TestCase
         $w->getWeather('深圳');
     }
 
-    /**
-     *
-     */
     public function testGetHttpClient()
     {
         $w = new Weather('mock-key');
@@ -133,9 +124,6 @@ class WeatherTest extends TestCase
         $this->assertInstanceOf(ClientInterface::class, $w->getHttpClient());
     }
 
-    /**
-     *
-     */
     public function testSetGuzzleOptions()
     {
         $w = new Weather('mock-key');

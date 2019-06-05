@@ -1,5 +1,6 @@
 <?php
-/**
+
+/*
  * This file is part of the luoweikingjj/weather.
  *
  * (c) luoweikingjj <i@luowe.top>
@@ -14,10 +15,8 @@ use GuzzleHttp\Client;
 use Luoweikingjj\Weather\Exceptions\HttpException;
 use Luoweikingjj\Weather\Exceptions\InvalidArgumentException;
 
-
 /**
- * Class Weather
- * @package Luoweikingjj\Weather
+ * Class Weather.
  */
 class Weather
 {
@@ -25,6 +24,7 @@ class Weather
      * @var string
      */
     private $key;
+
     /**
      * @var array
      */
@@ -32,6 +32,7 @@ class Weather
 
     /**
      * Weather constructor.
+     *
      * @param string $key
      */
     public function __construct(string $key)
@@ -59,7 +60,9 @@ class Weather
      * @param $city
      * @param string $type
      * @param string $format
+     *
      * @return mixed|string
+     *
      * @throws HttpException
      * @throws InvalidArgumentException
      */
@@ -114,7 +117,9 @@ class Weather
     /**
      * @param $city
      * @param string $format
+     *
      * @return mixed|string
+     *
      * @throws HttpException
      * @throws InvalidArgumentException
      */
@@ -126,7 +131,9 @@ class Weather
     /**
      * @param $city
      * @param string $format
+     *
      * @return mixed|string
+     *
      * @throws HttpException
      * @throws InvalidArgumentException
      */
