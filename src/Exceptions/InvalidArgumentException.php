@@ -1,5 +1,6 @@
 <?php
-/**
+
+/*
  * This file is part of the luoweikingjj/weather.
  *
  * (c) luoweikingjj <i@luowe.top>
@@ -11,10 +12,8 @@
 namespace Luoweikingjj\Weather\Exceptions;
 
 /**
- * Class InvalidArgumentException
- * @package Luoweikingjj\Weather\Exceptions
+ * Class InvalidArgumentException.
  */
 class InvalidArgumentException extends Exception
 {
-    
 }
