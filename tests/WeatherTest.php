@@ -1,4 +1,12 @@
 <?php
+/**
+ * This file is part of the luoweikingjj/weather.
+ *
+ * (c) luoweikingjj <i@luowe.top>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
 
 namespace Luoweikingjj\Weather\Tests;
 
@@ -11,8 +19,16 @@ use Luoweikingjj\Weather\Weather;
 use Mockery\Matcher\AnyArgs;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Class WeatherTest
+ * @package Luoweikingjj\Weather\Tests
+ */
 class WeatherTest extends TestCase
 {
+    /**
+     * @throws HttpException
+     * @throws InvalidArgumentException
+     */
     public function testGetWeatherWithInvalidType()
     {
         $w = new Weather('mock-key');
@@ -25,6 +41,10 @@ class WeatherTest extends TestCase
         $this->fail('Failed to assert getWeather throw exception with invalid argument.');
     }
 
+    /**
+     * @throws HttpException
+     * @throws InvalidArgumentException
+     */
     public function testGetWeatherWithInvalidFormat()
     {
         $w = new Weather('mock-key');
@@ -37,19 +57,25 @@ class WeatherTest extends TestCase
         $this->fail('Failed to assert getWeather throw exception with invalid argument.');
     }
 
+    /**
+     *
+     */
     public function testGetWeather()
     {
         // json
         $response = new Response(200, [], '{"success": true}');
         $client = \Mockery::mock(Client::class);
-        $client->allows()->get('https://restapi.amap.com/v3/weather/weatherInfo', [
-            'query' => [
-                'key' => 'mock-key',
-                'city' => '深圳',
-                'output' => 'json',
-                'extensions' => 'base',
-            ],
-        ])->andReturn($response);
+        $client->allows()->get(
+            'https://restapi.amap.com/v3/weather/weatherInfo',
+            [
+                'query' => [
+                    'key' => 'mock-key',
+                    'city' => '深圳',
+                    'output' => 'json',
+                    'extensions' => 'base',
+                ],
+            ]
+        )->andReturn($response);
 
         $w = \Mockery::mock(Weather::class, ['mock-key'])->makePartial();
         $w->allows()->getHttpClient()->andReturn($client);
@@ -59,14 +85,17 @@ class WeatherTest extends TestCase
         // xml
         $response = new Response(200, [], '<hello>content</hello>');
         $client = \Mockery::mock(Client::class);
-        $client->allows()->get('https://restapi.amap.com/v3/weather/weatherInfo', [
-            'query' => [
-                'key' => 'mock-key',
-                'city' => '深圳',
-                'extensions' => 'all',
-                'output' => 'xml',
-            ],
-        ])->andReturn($response);
+        $client->allows()->get(
+            'https://restapi.amap.com/v3/weather/weatherInfo',
+            [
+                'query' => [
+                    'key' => 'mock-key',
+                    'city' => '深圳',
+                    'extensions' => 'all',
+                    'output' => 'xml',
+                ],
+            ]
+        )->andReturn($response);
 
         $w = \Mockery::mock(Weather::class, ['mock-key'])->makePartial();
         $w->allows()->getHttpClient()->andReturn($client);
@@ -74,6 +103,9 @@ class WeatherTest extends TestCase
         $this->assertSame('<hello>content</hello>', $w->getForecastWeather('深圳', 'xml'));
     }
 
+    /**
+     *
+     */
     public function testGetWeatherWithGuzzleRuntimeException()
     {
         $client = \Mockery::mock(Client::class);
@@ -90,6 +122,9 @@ class WeatherTest extends TestCase
         $w->getWeather('深圳');
     }
 
+    /**
+     *
+     */
     public function testGetHttpClient()
     {
         $w = new Weather('mock-key');
@@ -98,6 +133,9 @@ class WeatherTest extends TestCase
         $this->assertInstanceOf(ClientInterface::class, $w->getHttpClient());
     }
 
+    /**
+     *
+     */
     public function testSetGuzzleOptions()
     {
         $w = new Weather('mock-key');
