@@ -23,7 +23,7 @@ $ composer require luoweikingjj/weather -vvv
 ## 使用
 
 ```php
-use luoweikingjj\Weather\Weather;
+use Luoweikingjj\Weather\Weather;
 
 $key = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx';
 
