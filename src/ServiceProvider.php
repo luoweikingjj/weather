@@ -1,5 +1,6 @@
 <?php
-/**
+
+/*
  * This file is part of the luoweikingjj/weather.
  *
  * (c) luoweikingjj <i@luowe.top>
@@ -11,8 +12,7 @@
 namespace Luoweikingjj\Weather;
 
 /**
- * Class ServiceProvider
- * @package Luoweikingjj\Weather
+ * Class ServiceProvider.
  */
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
@@ -21,9 +21,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     protected $defer = true;
 
-    /**
-     *
-     */
     public function register()
     {
         $this->app->singleton(
